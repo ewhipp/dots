@@ -6,10 +6,10 @@ local cmd_shift = {"cmd", "shift"}
 local primary_monitor= "Color LCD"
 local second_monitor = "SyncMaster"
 local third_monitor = "DELL S2330MX"
-local mainBrowser = "Google Chrome"
-local mainEditor = "Atom"
+local mainBrowser = "Safari"
+local mainEditor = "xCode"
 local ipadMonitor = "Display"
-
+local mainTerm = "Terminal"
 
 --------------------------------------------------
 -- cmd + shift + l move windowSize right + 50 pixels
@@ -128,8 +128,8 @@ hs.hotkey.bind({"cmd"}, "W", function()
   hs.application.launchOrFocus(mainBrowser)
 end)
 
-hs.hotkey.bind({"cmd", "shift"}, "T", function()
-  hs.application.launchOrFocus("iTerm")
+hs.hotkey.bind(cmd_shift, "T", function()
+  hs.application.launchOrFocus("mainTerm")
 end)
 
 hs.hotkey.bind({"cmd"}, "M", function()
@@ -444,22 +444,3 @@ function hs.screen.get(screen_name)
     end
   end
 end
-
------------------------------------------
--- attempt at tiling window management --
------------------------------------------
-local tiling = require "hs.tiling"
-local hotkey = require "hs.hotkey"
-local tileMash = {"ctrl", "cmd"}
-
-hotkey.bind(tileMash, "c", function() tiling.cycleLayout() end)
-hotkey.bind(tileMash, "j", function() tiling.cycle(1) end)
-hotkey.bind(tileMash, "k", function() tiling.cycle(-1) end)
-hotkey.bind(tileMash, "space", function() tiling.promote() end)
-hotkey.bind(tileMash, "f", function() tiling.goToLayout("fullscreen") end)
-hotkey.bind(tileMash, "v", function() tiling.goToLayout("columns") end)
-hotkey.bind(tileMash, "r", function() tiling.goToLayout("rows") end)
-
-tiling.set('layouts', {
-    'fullscreen', 'main-vertical', 'columns', 'rows'
-})
