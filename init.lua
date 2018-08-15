@@ -21,6 +21,7 @@ local ipadMonitor = "Display"
 local mainTerm = "Terminal"
 local slack = "Slack"
 local m_Control = "MoneyControl"
+local mail_program = "Microsoft Outlook"
 
 --------- SCREEN BLOCKS ------------
 -- Left
@@ -119,12 +120,16 @@ hs.hotkey.bind(cmd_shift, "X", function()
   hs.application.launchOrFocus("xCode")
 end)
 
+hs.hotkey.bind(cmd_shift, "J", function()
+  hs.application.launchOrFocus(m_Control)
+end)
+
 hs.hotkey.bind({"cmd"}, "W", function()
   hs.application.launchOrFocus(mainBrowser)
 end)
 
 hs.hotkey.bind({"cmd"}, "M", function()
-  hs.application.launchOrFocus("Mail")
+  hs.application.launchOrFocus(mail_program)
 end)
 
 hs.hotkey.bind({"cmd"}, "E", function()
