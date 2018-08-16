@@ -23,6 +23,12 @@ local slack = "Slack"
 local m_Control = "MoneyControl"
 local mail_program = "Microsoft Outlook"
 
+--------- LOCK SCREEN ------------
+
+hs.hotkey.bind(cmd_alt_ctrl, "Up", function()
+  hs.caffeinate.lockScreen()
+end)
+
 --------- SCREEN BLOCKS ------------
 -- Left
 hs.hotkey.bind(cmd_ctrl, "Left", function()
