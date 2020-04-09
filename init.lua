@@ -8,19 +8,23 @@ local cmd_alt_ctrl = {"cmd", "alt", "ctrl"};
 
 --------- MONITORS -----------------
 
-local primary_monitor= "Color LCD"
-local second_monitor = "SyncMaster"
-local third_monitor = "DELL S2330MX"
-local work_monitor = "HD 709-A"
+function moveToDisplay(display)
+  return function()
+    local displays = hs.screen.allScreens()
+    local currentWindow = hs.window.focusedWindow()
+    currentWindow:moveToScreen(displays[display], false, true)
+  end
+end
+
+hs.hotkey.bind(cmd_shift, "1", moveToDisplay(1))
+hs.hotkey.bind(cmd_shift, "2", moveToDisplay(2))
 
 --------- PROGRAMS -----------------
 
 local mainBrowser = "Google Chrome"
 local mainEditor = "IntelliJ IDEA"
-local ipadMonitor = "Display"
 local mainTerm = "Terminal"
 local slack = "Slack"
-local m_Control = "MoneyControl"
 local mail_program = "Microsoft Outlook"
 
 --------- LOCK SCREEN ------------
@@ -388,35 +392,4 @@ hs.hotkey.bind(cmd_alt_ctrl, "W", function() openGoogleDrive() end)
 
 --------- FOCUS MONITOR -------------
 
-hs.hotkey.bind(cmd_shift, "1", function()
-  local win = hs.window.focusedWindow()
-  if (win) then
-    win:moveToScreen(hs.screen.get(primary_monitor))
-    win:maximize()
-  end
-end)
 
-hs.hotkey.bind( cmd_shift, "2", function()
-  local win = hs.window.focusedWindow()
-  if (win) then
-    win:moveToScreen(hs.screen.get(work_monitor))
-    win:maximize()
-  end
-end)
-
-hs.hotkey.bind( cmd_shift, "2", function()
-  local win = hs.window.focusedWindow()
-  if (win) then
-    win:moveToScreen(hs.screen.get(ipadMonitor))
-    win:maximize()
-  end
-end)
-
-function hs.screen.get(screen_name)
-  local allScreens = hs.screen.allScreens()
-  for i, screen in ipairs(allScreens) do
-    if screen:name() == screen_name then
-      return screen
-    end
-  end
-end
