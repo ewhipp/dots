@@ -2,7 +2,7 @@
 COMMANDS	ACTION
 
 CMD+W		Open main browser
-CMD+M		Open mail progam
+CMD+M		Open mail program
 CMD+E		Open main text editor
 CMD+SHIFT+T	Open main terminal
 CMD+SHIFT+B	Open business communication program

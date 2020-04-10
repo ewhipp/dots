@@ -36,10 +36,10 @@ hs.loadSpoon("PomodoroClock")
 hs.loadSpoon("WindowManager")
 
 function show_listeners()
-    local user = hs.execute("whoami")
     local shell_command = string.gsub("open /Users/" .. hs.execute("whoami") .. "/.hammerspoon/commands.txt", "\n", "")
     hs.execute(shell_command)
 end
+
 
 function obj:init() 
     print("[Key Listener]: Setting listeners")
