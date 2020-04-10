@@ -25,7 +25,7 @@ end
 
 function obj:init()
     hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
-    hs.notify.show("Successfully reloaded configuration.", "", "")
+    hs.notify.show("Successfully reloaded configuration.", "", "Press CTRL+SHIFT+H to view commands.")
 end
 
 return obj

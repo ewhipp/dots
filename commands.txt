@@ -1,0 +1,33 @@
+============ Application Management ===============
+COMMANDS	ACTION
+
+CMD+W		Open main browser
+CMD+M		Open mail progam
+CMD+E		Open main text editor
+CMD+SHIFT+T	Open main terminal
+CMD+SHIFT+B	Open business communication program
+CMD+SHIFT+M	Open main music program
+CMD+SHIFT+C	Open Messages
+CMD+SHIFT+X	Open XCode
+CTRL+SHIFT+N	Open Notes application
+
+============= Window Management ====================
+COMMANDS	ACTION
+
+CMD+CTRL+Left	Move Focused Window Left
+CMD+CTRL+Right	Move Focused Window Right
+CMD+CTRL+]	Move Focused Window Top Right
+CMD+CTRL+'	Move Focused Window Bottom Right
+CMD+CTRL+[	Move Focused Window Top Left
+CMD+CTRL+;	Move Focused Window bottom left
+CMD+CTRL+Down	Move Focused Window Center
+CMD+CTRL+Up     Move Focused Window Full Screen
+CMD+SHIFT+1	Move Focused Window to display 1
+CMD+SHIFT+2	Move Focused Window to display 2
+
+============ Pomodoro Clock ========================
+COMMANDS	ACTION
+
+CMD+CTRL+1	Start pomodoro clock
+CMD+CTRL+0	Pause pomodoro clock
+CMD+CTRL+2	Reset pomodoro clock	
