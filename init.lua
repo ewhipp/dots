@@ -181,23 +181,13 @@ hs.hotkey.bind({"cmd"}, "M",
 
 hs.hotkey.bind({"cmd"}, "E",
                function() hs.application.launchOrFocus(mainEditor) end)
+-------- APPLICATIONS END  -------------
 
---------- CONTROL SPOTIFY ---------
-
-hs.hotkey.bind(cmd_ctrl, "P", function()
-    hs.spotify.play()
-    hs.spotify.displayCurrentTrack()
-end)
-
-hs.hotkey.bind({"cmd", "ctrl"}, "S", function() hs.spotify.pause() end)
-
-
---- Pomdoro Clock
 hs.loadSpoon("PomodoroClock")
-hs.hotkey.bind(cmd_ctrl, "1", function() spoon.PomodoroClock.start() end)
-hs.hotkey.bind(cmd_ctrl, '0', function() spoon.PomodoroClock.stop() end)
+hs.hotkey.bind(cmd_ctrl, "1", function() spoon.PomodoroClock:start() end)
+hs.hotkey.bind(cmd_ctrl, '0', function() spoon.PomodoroClock:stop() end)
+hs.hotkey.bind(cmd_ctrl, '2', function() spoon.PomodoroClock:reset() end)
 
---------- END POMODORO CLOCK --------
 
 --------- OPEN WEBSITES -------------
 
