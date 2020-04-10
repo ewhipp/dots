@@ -1,5 +1,3 @@
-
-
 --- === Pomodoro Clock ===
 ---
 --- Mimics the functionality of a standard pomodoro clock
@@ -7,7 +5,6 @@
 --- Configurable properties
 ---   time to work
 ---   time to rest
----   job to complete
 ---   bar indicator at the top of the screen height
 
 --- Metadata
@@ -25,7 +22,6 @@ obj.logger = logger
 obj._attribs = {
     time_to_work = 25,
     time_to_rest = 5,
-    job_to_complete = "",
     bar_height = 0.1
 }
 
@@ -77,23 +73,23 @@ end
 --- Method
 --- Starts the Pomodoro clock with current configuration
 function obj:start()
+    if (obj.pom.var.is_active) then
+      print("[Pomodoro]: Already engaged returning")
+      return
+    end
+
     print(string.format("[Pomodoro]: Starting Pomodoro Clock\n[Time to work] = [%s]\t[Time to rest] = [%s]", 
       obj.time_to_work, 
       obj.time_to_rest)
     )
-    local notification_window = hs.notify.new(
+    hs.notify.new(
         function() return end, 
         { 
           title="Time to start working", 
           soundName="Glass.aiff"
-        })
-    notification_window:send()
+        }):send()
 
     obj.pom.var.disable_count = 0;
-
-    if (obj.pom.var.is_active) then
-        return
-    end
 
     pom_create_menu()
     pom_timer = hs.timer.new(1, pom_update_time)
@@ -134,6 +130,20 @@ function obj:stop()
     end
 
     obj.pom.var.disable_count = obj.pom.var.disable_count + 1
+end
+
+
+--- PomodoroClock:reset()
+--- Method
+--- Resets the Pomodoro clock to the set amount of time for working
+function obj:reset()
+    pom_reset_timer()
+    hs.notify.new(
+        function() return end, 
+        { 
+          title="Success: Reset Pomodoro Clock", 
+          soundName="Glass.aiff"
+    }):send()
 end
 
 --------- COLOR BAR FOR POMODORO ---------
@@ -243,6 +253,6 @@ function pom_create_menu()
     end
 end
 
-function pom_reset_timer() pom.var.work_count = 0; end
+function pom_reset_timer() obj.pom.var.time_left = obj.time_to_work * 60;  end
 
 return obj
