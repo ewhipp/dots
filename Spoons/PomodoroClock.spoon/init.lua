@@ -77,8 +77,20 @@ end
 --- Method
 --- Starts the Pomodoro clock with current configuration
 function obj:start()
-    print("[Pomodoro]: Starting Pomodoro Clock")
+    print(string.format("[Pomodoro]: Starting Pomodoro Clock\n[Time to work] = [%s]\t[Time to rest] = [%s]", 
+      obj.time_to_work, 
+      obj.time_to_rest)
+    )
+    local notification_window = hs.notify.new(
+        function() return end, 
+        { 
+          title="Time to start working", 
+          soundName="Glass.aiff"
+        })
+    notification_window:send()
+
     obj.pom.var.disable_count = 0;
+
     if (obj.pom.var.is_active) then
         return
     end
@@ -99,7 +111,9 @@ function obj:stop()
     obj.pom.var.is_active = false
 
     if (obj.pom.var.disable_count == 0) then
-        if (pom_was_active) then pom_timer:stop() end
+        if (pom_was_active) then 
+            pom_timer:stop() 
+        end
 
     elseif (obj.pom.var.disable_count == 1) then
         obj.pom.var.time_left = self.pom.config.work_period_sec
@@ -186,10 +200,23 @@ function pom_update_time()
                 hs.alert.show("Work Complete!", 2)
                 obj.pom.var.work_count = pom.var.work_count + 1
                 obj.pom.var.curr_active_type = "rest"
+                local notification_window = hs.notify.new(
+                    function() return end, 
+                    { 
+                        title="Time to rest!", 
+                        soundName="Glass.aiff"
+                    })
+                notification_window:send()
                 obj.pom.var.time_left = pom.config.rest_period_sec
                 obj.pom.var.max_time_sec = pom.config.rest_period_sec
             else
-                hs.alert.show("Done resting", 2)
+                local notification_window = hs.notify.new(
+                    function() return end, 
+                    { 
+                        title="Time to work!", 
+                        soundName="Glass.aiff"
+                    })
+                notification_window:send()
                 obj.pom.var.curr_active_type = "work"
                 obj.pom.var.time_left = pom.config.work_period_sec
                 obj.pom.var.max_time_sec = pom.config.work_period_sec

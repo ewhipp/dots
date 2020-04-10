@@ -193,7 +193,6 @@ hs.hotkey.bind({"cmd", "ctrl"}, "S", function() hs.spotify.pause() end)
 
 
 --- Pomdoro Clock
-print("loading pomodoro")
 hs.loadSpoon("PomodoroClock")
 hs.hotkey.bind(cmd_ctrl, "1", function() spoon.PomodoroClock.start() end)
 hs.hotkey.bind(cmd_ctrl, '0', function() spoon.PomodoroClock.stop() end)
