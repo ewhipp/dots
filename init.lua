@@ -19,7 +19,7 @@ hs.hotkey.bind(cmd_shift, "2", moveToDisplay(2))
 
 --------- PROGRAMS -----------------
 
-local mainBrowser = "Google Chrome"
+local mainBrowser = "Safari"
 local mainEditor = "Code"
 local mainTerm = "Terminal"
 local slack = "Slack"
@@ -197,7 +197,7 @@ function openGoogleDrive()
     hs.application.launchOrFocus(mainBrowser)
 end
 
-hs.hotkey.bind(cmd_alt_ctrl, "W", function() openGoogleDrive() end)
+hs.hotkey.bind(cmd_ctrl, "W", function() openGoogleDrive() end)
 
 --------- FOCUS MONITOR -------------
 
