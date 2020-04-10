@@ -13,7 +13,7 @@ obj.name = "Pomodoro Clock"
 obj.version = "1.0"
 obj.author = "ewhipp <whipp.erik@gmail.com>"
 obj.license = "MIT"
-obj.homepage = "nil"
+obj.homepage = nil
 
 local logger = hs.logger.new("Pomodoro Clock")
 obj.logger = logger
