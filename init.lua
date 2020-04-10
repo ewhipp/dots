@@ -1,3 +1,3 @@
 -- Hammerspoon configuration by Erik Whipp
 hs.loadSpoon("ConfigurationWatcher")
-hs.loadSpoon("ApplicationLauncher")
+hs.loadSpoon("KeyListener")
