@@ -14,10 +14,10 @@ obj.homepage = nil
 local logger = hs.logger.new("Application Launcher")
 obj.logger = logger
 
-local cmd_shift = {"cmd", "shift"}
-local cmd_ctrl = {"cmd", "ctrl"}
-local cmd_alt_ctrl = {"cmd", "alt", "ctrl"};
-local cmd = { "cmd" }
+cmd_shift = {"cmd", "shift"}
+cmd_ctrl = {"cmd", "ctrl"}
+cmd_alt_ctrl = {"cmd", "alt", "ctrl"};
+cmd = { "cmd" }
 
 local programs = {
     main_browser="Safari",

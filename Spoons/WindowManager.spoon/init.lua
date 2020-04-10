@@ -139,10 +139,10 @@ function obj:center()
     win:setFrame(f)
 end
 
---- WindowManager:moveToDisplay()
+--- WindowManager:move_to_display()
 --- Method
 --- Move focused window to the numbered display
-function obj:moveToDisplay(display)
+function obj:move_to_display(display)
     local displays = hs.screen.allScreens()
     local currentWindow = hs.window.focusedWindow()
     currentWindow:moveToScreen(displays[display], false, true)
