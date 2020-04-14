@@ -193,8 +193,8 @@ end
 function pom_time_display()
     local time_min = math.floor((pom.var.time_left / 60))
     local time_sec = obj.pom.var.time_left - (time_min * 60)
-    local str = string.format("[%s|%02d:%02d|#%02d]", pom.var.curr_active_type,
-                              time_min, time_sec, pom.var.work_count)
+    local str = string.format("[%s|%02d:%02d|#%02d]", obj.pom.var.curr_active_type,
+                              time_min, time_sec, obj.pom.var.work_count)
     pom_menu:setTitle(str)
 end
 
@@ -205,31 +205,28 @@ function pom_update_time()
         obj.pom.var.time_left = obj.pom.var.time_left - 1
 
         if (obj.pom.var.time_left <= 0) then
-            pom_disable()
             if obj.pom.var.curr_active_type == "work" then
                 hs.alert.show("Work Complete!", 2)
-                obj.pom.var.work_count = pom.var.work_count + 1
+                obj.pom.var.work_count = obj.pom.var.work_count + 1
                 obj.pom.var.curr_active_type = "rest"
-                local notification_window = hs.notify.new(
+                hs.notify.new(
                     function() return end, 
                     { 
                         title="Time to rest!", 
                         soundName="Glass.aiff"
-                    })
-                notification_window:send()
-                obj.pom.var.time_left = pom.config.rest_period_sec
-                obj.pom.var.max_time_sec = pom.config.rest_period_sec
+                    }):send()
+                obj.pom.var.time_left = obj.pom.config.rest_period_sec
+                obj.pom.var.max_time_sec = obj.pom.config.rest_period_sec
             else
-                local notification_window = hs.notify.new(
+                hs.notify.new(
                     function() return end, 
                     { 
                         title="Time to work!", 
                         soundName="Glass.aiff"
-                    })
-                notification_window:send()
+                    }):send()
                 obj.pom.var.curr_active_type = "work"
-                obj.pom.var.time_left = pom.config.work_period_sec
-                obj.pom.var.max_time_sec = pom.config.work_period_sec
+                obj.pom.var.time_left = obj.pom.config.work_period_sec
+                obj.pom.var.max_time_sec = obj.pom.config.work_period_sec
             end
         end
 
