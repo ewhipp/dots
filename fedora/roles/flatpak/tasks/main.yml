@@ -7,5 +7,7 @@
       - org.gimp.GIMP
       - us.zoom.Zoom
       - com.getpostman.Postman
+      - com.bitwig.BitwigStudio
+      - com.jetbrains.IntelliJ-IDEA-Ultimate
     state: present
   become: yes

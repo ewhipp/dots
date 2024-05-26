@@ -4,7 +4,9 @@ set -e
 GIT_HOME="$HOME/Documents/Resources/code"
 DOTFILES_DIR="$GIT_HOME/dots/fedora"
 CONFIG_DIR="$DOTFILES_DIR/.config"
+VAULT="$DOTFILES_DIR/.ansible/vault"
 SSH_DIR="$HOME/.ssh"
+pwd=$(pwd)
 
 set_pkg_mgr() {
     if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -66,7 +68,14 @@ if ! [[ -f "$DOTFILES_DIR/.ansible/vault.yml" ]]; then
     ansible-vault create $DOTFILES_DIR/.ansible/vault.yml
 fi
 
+if [ "$1" = "secrets" ]; then
+    cd $DOTFILES_DIR
+    ansible-playbook --diff --extra-vars "@$CONFIG_DIR/values.yml" "$DOTFILES_DIR/secrets.yml" "$@"
+    cd $pwd
+    exit 0
+fi
+
 cd "$DOTFILES_DIR"
 ansible-playbook --diff --extra-vars "@$CONFIG_DIR/values.yml" "$DOTFILES_DIR/main.yml" "$@"
 
-
+cd $pwd

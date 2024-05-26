@@ -20,3 +20,25 @@
       - jq
     state: present
   become: yes
+
+- name: Validate wheel
+  group:
+    name: wheel
+    state: present
+  become: yes
+
+- name: Give 'wheel' group passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+    validate: visudo -cf %s
+  become: yes
+  
+- name: Add ansible_sudo to wheel group
+  user:
+    name: "ansible_sudo"
+    groups: wheel
+    append: yes
+  become: yes
