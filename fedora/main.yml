@@ -4,19 +4,6 @@
   become: true
 
   tasks:
-  # - name: install packages
-  #   dnf:
-  #     name:
-  #       - htop
-  #       - dnf-utils
-  #       - gh
-  #       - fzf
-  #       - jq
-  #       - python3
-  #       - python3-devel
-  #       - tree
-  #       - wget
-
   - name: set roles
     set_fact:
       roles: "{{ ansible_run_tags != ['all'] and ansible_run_tags or default_roles | difference(exclude_roles | default([])) }}"
