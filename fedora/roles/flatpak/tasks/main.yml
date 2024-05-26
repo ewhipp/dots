@@ -5,4 +5,6 @@
       - org.videolan.VLC
       - md.obsidian.Obsidian
       - org.gimp.GIMP
+      - us.zoom.Zoom
+      - com.getpostman.Postman
     state: present
