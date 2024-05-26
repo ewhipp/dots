@@ -16,9 +16,7 @@
       - podman
       - podman-compose
       - dnf-plugins-core
+      - syncthing
+      - jq
     state: present
-
-- name: Install DNF Plugins Core
-  ansible.builtin.dnf:
-    name: dnf-plugins-core
-    state: present
+  become: yes

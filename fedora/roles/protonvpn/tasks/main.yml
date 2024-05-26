@@ -7,6 +7,7 @@
     gpgkey: hhttps://repo.protonvpn.com/fedora-40-stable/public-key.asc
     gpgcheck: true
     enabled: true
+  become: yes
 
 - name: Install
   ansible.builtin.dnf:
@@ -14,3 +15,4 @@
     name:
       - protonvpn-stable-release
       - proton-vpn-gnome-desktop
+  become: yes

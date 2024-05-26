@@ -1,12 +1,12 @@
 default_roles:
-  - discord
+  - system 
   - git
+  - github-cli
+  - docker
   - steam
   - flatpak
   - visual-studio-code
-  - github-cli
   - kubectl
-  - system 
   - protonvpn
   - 1password
-
+  - discord

@@ -7,9 +7,11 @@
     gpgkey: https://packages.microsoft.com/keys/microsoft.asc
     gpgcheck: true
     enabled: true
+  become: yes
 
 - name: Install
   ansible.builtin.dnf:
     state: present
     name:
       - code
+  become: yes

@@ -11,30 +11,35 @@
     name: diff.colorMoved
     scope: global
     value: zebra
+  become: yes
 
 - name: Set fetch.prune
   community.general.git_config:
     name: fetch.prune
     scope: global
     value: true
+  become: yes
 
 - name: Set init.defaultBranch
   community.general.git_config:
     name: init.defaultBranch
     scope: global
     value: main
+  become: yes
 
 - name: Set pull.rebase
   community.general.git_config:
     name: pull.rebase
     scope: global
     value: true
+  become: yes
 
 - name: Set rebase.autoStash
   community.general.git_config:
     name: rebase.autoStash
     scope: global
     value: true
+  become: yes
 
 - name: Set user.email
   community.general.git_config:
@@ -42,9 +47,11 @@
     scope: global
     value: "{{ git_user_email }}"
   no_log: true
+  become: yes
 
 - name: Set user.name
   community.general.git_config:
     name: user.name
     scope: global
-    value: "{{ git_user_name }}"
+    value: "{{ git_user_name }}"  
+  become: yes

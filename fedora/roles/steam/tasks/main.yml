@@ -4,3 +4,4 @@
     state: latest
     name:
       - steam
+  become: yes

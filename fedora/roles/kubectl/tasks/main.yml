@@ -6,8 +6,10 @@
     gpgkey: https://pkgs.k8s.io/core:/stable:/v1.28/rpm/repodata/repomd.xml.key
     gpgcheck: true
     enabled: true
+  become: yes
 
 - name: Install kubectl
   ansible.builtin.dnf:
     name: kubectl
     state: present
+  become: yes

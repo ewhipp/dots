@@ -8,3 +8,4 @@
       - us.zoom.Zoom
       - com.getpostman.Postman
     state: present
+  become: yes
