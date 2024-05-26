@@ -1,0 +1,15 @@
+---
+- name: 1Password Stable Channel
+  ansible.builtin.yum_repository:
+    name: 1password
+    description: 1Password
+    baseurl: https://downloads.1password.com/linux/rpm/stable/\$basearch
+    gpgkey: https://downloads.1password.com/linux/keys/1password.asc
+    gpgcheck: true
+    enabled: true
+
+- name: Install
+  ansible.builtin.dnf:
+    state: present
+    name:
+      - 1password

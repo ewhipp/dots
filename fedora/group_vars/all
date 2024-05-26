@@ -8,4 +8,5 @@ default_roles:
   - kubectl
   - system 
   - protonvpn
+  - 1password
 
