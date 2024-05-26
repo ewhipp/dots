@@ -1,0 +1,24 @@
+---
+- name: Install packages
+  ansible.builtin.dnf:
+    name:
+      - make
+      - fzf
+      - tmux
+      - zlib
+      - openssl-devel
+      - gcc-c++
+      - doctl
+      - "@Development Tools"
+      - autoconf
+      - java-21-openjdk-devel
+      - blender
+      - podman
+      - podman-compose
+      - dnf-plugins-core
+    state: present
+
+- name: Install DNF Plugins Core
+  ansible.builtin.dnf:
+    name: dnf-plugins-core
+    state: present

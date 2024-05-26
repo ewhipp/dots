@@ -1,0 +1,6 @@
+---
+- name: Install
+  ansible.builtin.dnf:
+    state: latest
+    name:
+      - steam

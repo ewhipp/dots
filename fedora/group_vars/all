@@ -1,0 +1,11 @@
+default_roles:
+  - discord
+  - git
+  - steam
+  - flatpak
+  - visual-studio-code
+  - github-cli
+  - kubectl
+  - system 
+  - protonvpn
+

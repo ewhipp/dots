@@ -1,0 +1,8 @@
+- name: Install Flatpak packages
+  community.general.flatpak:
+    name:
+      - com.obsproject.Studio
+      - org.videolan.VLC
+      - md.obsidian.Obsidian
+      - org.gimp.GIMP
+    state: present

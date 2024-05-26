@@ -1,0 +1,13 @@
+- name: Add kubectl repo
+  ansible.builtin.yum_repository:
+    name: Kubernetes
+    description: Kubernetes repo
+    baseurl: https://pkgs.k8s.io/core:/stable:/v1.28/rpm/
+    gpgkey: https://pkgs.k8s.io/core:/stable:/v1.28/rpm/repodata/repomd.xml.key
+    gpgcheck: true
+    enabled: true
+
+- name: Install kubectl
+  ansible.builtin.dnf:
+    name: kubectl
+    state: present

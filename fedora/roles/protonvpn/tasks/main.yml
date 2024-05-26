@@ -1,0 +1,16 @@
+---
+- name: Add ProtonVPN Repo
+  ansible.builtin.yum_repository:
+    name: protonvpn
+    description: ProtonVPN
+    baseurl: https://repo.protonvpn.com/fedora-40-stable
+    gpgkey: hhttps://repo.protonvpn.com/fedora-40-stable/public-key.asc
+    gpgcheck: true
+    enabled: true
+
+- name: Install
+  ansible.builtin.dnf:
+    state: present
+    name:
+      - protonvpn-stable-release
+      - proton-vpn-gnome-desktop

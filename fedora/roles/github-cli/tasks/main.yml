@@ -1,0 +1,7 @@
+---
+- name: Install
+  ansible.builtin.package:
+    name:
+      - gh
+    state: latest
+  become: yes
