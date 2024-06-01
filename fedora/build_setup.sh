@@ -8,26 +8,46 @@ VAULT="$DOTFILES_DIR/.ansible/vault"
 SSH_DIR="$HOME/.ssh"
 pwd=$(pwd)
 
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+
+echo $machine
+
 set_pkg_mgr() {
-    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+
+	echo "checking os and readiness"
+    if [[ $machine == "Linux" ]]; then
+        echo "test"
+	echo "on fedora, gathering dnf"
         sudo dnf clean all  > /dev/null && \
         sudo dnf makecache > /dev/null && \
         sudo dnf install -y python3 python3-devel python3-pip python3-wheel gcc git
         echo "dnf"
-		elif [[ "$OSTYPE" == "darwin"* ]]; then
-        # Mac OSX
-        if ! [ -x "$(command -v brew)" ]; then
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-		fi
-		echo "brew"
+    elif [[ "$machine" == "Mac" ]]; then
+    # Mac OSX
+        if ! command -v brew &> /dev/null 
+	then
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
+	    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/$(whoami)/.zprofile && \
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+        fi
+        echo "brew"
     fi
 }
 
-PKG_MGR=$(set_pkg_mgr)
+set_pkg_mgr
 
-if ! [ -x "$(command -v ansible)" ]; then
-    echo $($PKG_MGR = "dnf")
-    $([ "$PKG_MGR" = "dnf" ] && sudo "$PKG_MGR" install -y ansible || "$PKG_MGR" install ansible)
+if ! command -v ansible &> /dev/null
+then
+	if [[ $machine == "Linux" ]]; then
+		sudo dnf install -y ansible
+	elif [[ $machine == "Mac" ]]; then
+		brew install ansible
+	fi
 fi
 
 # Generate ssh keys for working with Git
