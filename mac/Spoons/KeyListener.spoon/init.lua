@@ -18,6 +18,7 @@ cmd_shift = {"cmd", "shift"}
 cmd_ctrl = {"cmd", "ctrl"}
 cmd_alt_ctrl = {"cmd", "alt", "ctrl"}
 cmd = { "cmd" }
+opt = { "alt" }
 ctrl_shift = { "ctrl", "shift" }
 opt_shift = { "alt", "shift"}
 
@@ -28,6 +29,7 @@ local programs = {
     main_terminal="Terminal",
     main_communication="Discord",
     work_communication="Slack", 
+    backup_work_communication="Webex",
     notes="Obsidian",
     pmanager="1password"
 }
@@ -50,6 +52,7 @@ function obj:init()
     hs.hotkey.bind(cmd,       "E",      function() hs.application.launchOrFocus(programs.main_editor)            end)
     hs.hotkey.bind(cmd_shift, "T",      function() hs.application.launchOrFocus(programs.main_terminal)          end)
     hs.hotkey.bind(cmd_shift, "B",      function() hs.application.launchOrFocus(programs.work_communication)     end)
+    hs.hotkey.bind(opt_shift, "B",      function() hs.application.launchOrFocus(programs.backup_work_communication)     end)
     hs.hotkey.bind(ctrl_shift,"B",      function() hs.application.launchOrFocus(programs.main_communication)     end)
     hs.hotkey.bind(ctrl_shift,"P",      function() hs.application.launchOrFocus(programs.pmanager)               end)
     hs.hotkey.bind(cmd_ctrl,  "Left",   function() spoon.WindowManager:left()                                    end)
@@ -65,15 +68,24 @@ function obj:init()
     hs.hotkey.bind(cmd_ctrl,  "2",      function() spoon.PomodoroClock:reset()                                   end)
     hs.hotkey.bind(cmd_shift, "1",      function() spoon.WindowManager:move_to_display(1)                        end)
     hs.hotkey.bind(cmd_shift, "2",      function() spoon.WindowManager:move_to_display(2)                        end)
+    hs.hotkey.bind(cmd_shift, "3",      function() spoon.WindowManager:move_to_display(3)                        end)
     hs.hotkey.bind(ctrl_shift,"H",      show_listeners)
-    hs.hotkey.bind(opt_shift, "1",       function() spoon.SpaceManager:move_window_to_space(1)                    end)
-    hs.hotkey.bind(opt_shift, "2",       function() spoon.SpaceManager:move_window_to_space(2)                    end)
-    hs.hotkey.bind(opt_shift, "3",       function() spoon.SpaceManager:move_window_to_space(3)                    end)
-    hs.hotkey.bind(opt_shift, "4",       function() spoon.SpaceManager:move_window_to_space(4)                    end)
-    hs.hotkey.bind(opt_shift, "5",       function() spoon.SpaceManager:move_window_to_space(5)                    end)
-    hs.hotkey.bind(opt_shift, "6",       function() spoon.SpaceManager:move_window_to_space(6)                    end)
-    hs.hotkey.bind(opt_shift, "N" ,      function() spoon.SpaceManager:create_new_space()                         end)
-    hs.hotkey.bind(opt_shift, "L" ,      function() spoon.SpaceManager:debug_spaces()                             end)
+    hs.hotkey.bind(opt, "1",       function() spoon.SpaceManager:move_window_to_space(1)                         end)
+    hs.hotkey.bind(opt, "2",       function() spoon.SpaceManager:move_window_to_space(2)                         end)
+    hs.hotkey.bind(opt, "3",       function() spoon.SpaceManager:move_window_to_space(3)                         end)
+    hs.hotkey.bind(opt, "4",       function() spoon.SpaceManager:move_window_to_space(4)                         end)
+    hs.hotkey.bind(opt, "5",       function() spoon.SpaceManager:move_window_to_space(5)                         end)
+    hs.hotkey.bind(opt, "6",       function() spoon.SpaceManager:move_window_to_space(6)                         end)
+    hs.hotkey.bind(opt, "7",       function() spoon.SpaceManager:move_window_to_space(7)                         end)
+    hs.hotkey.bind(opt_shift, "1" ,      function() spoon.SpaceManager:go_to_space(1)                            end)
+    hs.hotkey.bind(opt_shift, "2" ,      function() spoon.SpaceManager:go_to_space(2)                            end)
+    hs.hotkey.bind(opt_shift, "3" ,      function() spoon.SpaceManager:go_to_space(3)                            end)
+    hs.hotkey.bind(opt_shift, "4" ,      function() spoon.SpaceManager:go_to_space(4)                            end)
+    hs.hotkey.bind(opt_shift, "5" ,      function() spoon.SpaceManager:go_to_space(5)                            end)
+    hs.hotkey.bind(opt_shift, "6" ,      function() spoon.SpaceManager:go_to_space(6)                            end)
+    hs.hotkey.bind(opt_shift, "7" ,      function() spoon.SpaceManager:go_to_space(7)                            end)
+    hs.hotkey.bind(opt, "N" ,      function() spoon.SpaceManager:create_new_space()                              end)
+    hs.hotkey.bind(opt, "L" ,      function() spoon.SpaceManager:debug_spaces()                                  end)
 end
 
 return obj

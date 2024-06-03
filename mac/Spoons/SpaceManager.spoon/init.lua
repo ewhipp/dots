@@ -44,8 +44,9 @@ function obj:create_new_space()
     end
 end
 
-function obj:go_to_space(space_number)
-    hs.spaces.gotoSpace(space_number) 
+function obj:go_to_space(space)
+    local space_id = obj.spaces[space]
+    hs.spaces.gotoSpace(space_id) 
 end
 
 function obj:move_window_to_space(space)
@@ -53,7 +54,7 @@ function obj:move_window_to_space(space)
     local space_id = obj.spaces[space]
     print("[SpaceManager] Going to space_id: " .. tostring(space_id) .. "\tspace: " .. tostring(space))
     local window = hs.window.focusedWindow()
-    hs.spaces.moveWindowToSpace(window, space_id, true)
+    hs.spaces.moveWindowToSpace(window, space_id)
     hs.spaces.gotoSpace(space_id)
 end
 
