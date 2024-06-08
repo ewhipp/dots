@@ -1,0 +1,45 @@
+---
+
+taps:
+  - homebrew/bundle
+  - homebrew/cask
+  - homebrew/cask-fonts
+  - homebrew/core
+
+brew_packages:
+  cli:
+    - bash
+    - bash-completion@2
+    - bat
+    - coreutils
+    - ffmpeg
+    - eza
+    - fzf
+    - gh
+    - gnu-sed
+    - gnu-tar
+    - gnu-which
+    - grep
+    - gzip
+    - helm
+    - jq
+    - kubectl
+    - kube-linter
+    - less
+    - tree
+    - vim 
+    - wget
+
+  gui:
+    - 1password
+    - obsidian
+    - firefox
+    - google-cloud-sdk
+    - kindle
+    - visual-studio-code
+    - zoom
+    - obsidian
+
+  virtual:
+    - utm
+

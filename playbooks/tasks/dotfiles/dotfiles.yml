@@ -1,0 +1,13 @@
+---
+
+- name: Install cheat script
+  ansible.builtin.get_url:
+    url: https://cht.sh/:cht.sh
+    dest: "{{ ansible_user_dir }}/.local/bin.cht"
+    mode: 0755
+  tags: dotfiles
+
+- name: Install pip packages
+  ansible.builtin.pip:
+    name: "{{ pip_packages['cli'] }}"
+  tags: [packages, pip]

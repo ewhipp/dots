@@ -1,0 +1,55 @@
+---
+
+- name: Set hostname
+  ansible.builtin.hostname:
+    name: "{{ hostname }}"
+    use: macos
+  become: true
+
+- name: Make bash default for root
+  ansible.builtin.user:
+    name: root
+    shell: "{{ homebrew_prefix }}/bin/bash"
+  become: true
+  tags: [root, shell]
+
+- name: Display sleep after 30 minutes, computer to sleep after 1 hour
+  ansible.builtin.shell: pmset displaysleep 30 && pmset sleep 60
+  changed_when: false
+  become: true
+  tags: [computer_power]
+
+- name: Enable firewall
+  ansible.builtin.command: /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
+  changed_when: false
+  become: true
+  tags: [security]
+
+- name: Disable gatekeeper
+  ansible.builtin.command: spctl --master-disable
+  changed_when: false
+  become: true
+  tags: [security]
+
+- name: Enable locate database
+  ansible.builtin.command: launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+  changed_when: false
+  become: true
+  tags: [locate_db]
+
+- name: Unhide ~/Library
+  ansible.builtin.command: "chflags nohidden {{ ansible_user_dir }}/Library"
+  changed_when: false
+  tags: [unhide_dirs]
+
+- name: Remove extended attributes on ~/Library
+  ansible.builtin.command: "xattr -c {{ ansible_user_dir }}/Library"
+  changed_when: false
+  tags: [unhide_dirs]
+
+- name: Unhide /Volumes
+  ansible.builtin.command: chflags nohidden /Volumes
+  changed_when: false
+  become: true
+  tags: [unhide_dirs]
+

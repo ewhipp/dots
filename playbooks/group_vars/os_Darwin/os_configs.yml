@@ -1,0 +1,129 @@
+---
+
+defaults:
+  - name: Show filename extensions by default
+    domain: NSGlobalDomain
+    key: AppleShowAllExtensions
+    type: bool
+    value: 'true'
+
+  - name: Disable creation of .DS_Store files on network volumes
+    domain: com.apple.desktopservices
+    key: DSDontWriteNetworkStores
+    type: bool
+    value: 'true'
+
+  - name: Open new Terminal tabs in the default directory
+    domain: com.apple.Terminal
+    key: NewTabWorkingDirectoryBehavior
+    type: int
+    value: '1'
+
+  - name: Hide external hard drives on desktop
+    domain: com.apple.finder
+    key: ShowExternalHardDrivesOnDesktop
+    type: bool
+    value: 'false'
+
+  - name: Hide hard drives on desktop
+    domain: com.apple.finder
+    key: ShowHardDrivesOnDesktop
+    type: bool
+    value: 'false'
+
+  - name: Enable status bar in Finder
+    domain: com.apple.finder
+    key: ShowStatusBar
+    type: bool
+    value: 'true'
+
+  - name: Enable breadcrumbs in Finder
+    domain: com.apple.finder
+    key: ShowPathbar
+    type: bool
+    value: 'true'
+
+  - name: Disable Trash empty warning
+    domain: com.apple.finder
+    key: WarnOnEmptyTrash
+    type: bool
+    value: 'false'
+
+  - name: Disable file extension change warning
+    domain: com.apple.finder
+    key: FXEnableExtensionChangeWarning
+    type: bool
+    value: 'false'
+
+  - name: Set default Finder view to list
+    domain: com.apple.finder
+    key: FXPreferredViewStyle
+    type: string
+    value: Nlsv
+
+  - name: Set default Finder new window target
+    domain: com.apple.finder
+    key: NewWindowTarget
+    type: string
+    value: PfLo
+
+  - name: Set default Finder location to ~/Downloads
+    domain: com.apple.finder
+    key: NewWindowTargetPath
+    type: string
+    value: file://{{ ansible_user_dir }}/Downloads/
+
+  - name: Disable recent apps in the Dock
+    domain: com.apple.dock
+    key: show-recents
+    type: bool
+    value: 'false'
+
+
+  - name: Disable icon bouncing in the Dock
+    domain: com.apple.dock
+    key: no-bouncing
+    type: bool
+    value: 'true'
+
+  - name: Show app switcher on all displays
+    domain: com.apple.dock
+    key: appswitcher-all-displays
+    type: bool
+    value: 'true'
+
+  - name: Set Dock size
+    domain: com.apple.dock
+    key: tilesize
+    type: int
+    value: '43'
+
+  - name: Save screenshots to ~/Downloads
+    domain: com.apple.screencapture
+    key: location
+    type: string
+    value: '{{ ansible_user_dir }}/Downloads'
+
+  - name: Disable automatically rearranging Spaces
+    domain: com.apple.dock
+    key: mru-spaces
+    type: bool
+    value: 'false'
+
+  - name: Enable grouping windows by application
+    domain: com.apple.dock
+    key: expose-group-apps
+    type: bool
+    value: 'true'
+
+  - name: Set screensaver timeout
+    domain: com.apple.screensaver
+    key: idleTime
+    type: int
+    value: '300'
+
+  - name: Check for software updates daily
+    domain: com.apple.SoftwareUpdate
+    key: ScheduleFrequency
+    type: int
+    value: '1'

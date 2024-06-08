@@ -1,0 +1,11 @@
+---
+
+- name: Setup Dotfiles
+  hosts: localhost
+
+  tasks: 
+    - name: Import dotfiles.yml
+      ansible.builtin.import_tasks: tasks/dotfiles/dotfiles.yml
+
+    # - name: Import window manager
+    #   ansible.builtin.import_tasks: tasks/dotfiles/os_{{ ansible_system }}_wm.yml

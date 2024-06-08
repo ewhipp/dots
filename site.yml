@@ -1,0 +1,7 @@
+---
+
+- name: Bootstrap ansible
+  hosts: localhost
+
+- name: Import inventory playbook
+  ansible.builtin.import_playbook: inventory.yml

@@ -1,0 +1,24 @@
+---
+
+- name: Install Homebrew taps
+  community.general.homebrew_tap:
+    name: "{{ taps }}"
+  tags: [packages, taps]
+
+- name: Install Homebrew formulas
+  community.general.homebrew:
+    name: "{{ brew_packages['cli'] }}"
+  tags: [packages, formulas]
+
+- name: Install Homebrew Casks
+  community.general.homebrew_cask:
+    name: "{{ brew_packages['gui'] }}"
+    accept_external_apps: true
+  tags: [packages, casks]
+
+- name: Install homebrew casks for virtualization
+  community.general.homebrew_cask:
+    name: "{{ brew_packages['virtual'] }}"
+    accept_external_apps: true
+  when: ansible_model is match('Mac')
+  tags: [packages, casks]
